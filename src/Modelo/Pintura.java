@@ -9,6 +9,16 @@ public class Pintura {
     private String rutPrestamista;
     private int codSala;
 
+    public Pintura(int codPintura, int anio, int valor, String titulo,
+                   int codAutor, String rutPrestamista, int codSala) {
+        this.codPintura = codPintura;
+        this.anio = anio;
+        this.valor = valor;
+        this.titulo = titulo;
+        this.codAutor = codAutor;
+        this.rutPrestamista = rutPrestamista;
+        this.codSala = codSala;
+    }   
     public int getAnio() {
         return anio;
     }

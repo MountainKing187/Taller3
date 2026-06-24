@@ -38,15 +38,7 @@ public class PinturaDatos {
              ResultSet rs = pstmt.executeQuery()) {
             
             while (rs.next()) {
-                Pintura p = new Pintura();
-                p.setCodPintura(rs.getInt("Cod_Pintura"));
-                p.setAnio(rs.getInt("Año"));
-                p.setValor(rs.getInt("Valor"));
-                p.setTitulo(rs.getString("Titulo"));
-                p.setCodAutor(rs.getInt("Cod_Autor"));
-                p.setRutPrestamista(rs.getString("Rut_Prestamista"));
-                p.setCodSala(rs.getInt("Cod_Sala"));
-                
+                Pintura p = new Pintura(rs.getInt("Cod_Pintura"),rs.getInt("Año"),rs.getInt("Valor"),rs.getString("Titulo"),rs.getInt("Cod_Autor"),rs.getString("Rut_Prestamista"),rs.getInt("Cod_Sala"));
                 listaPinturas.add(p);
             }
         } catch (SQLException e) {

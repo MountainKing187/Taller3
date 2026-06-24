@@ -49,7 +49,6 @@ public class Main {
         System.out.println("2. Agregar pintura");
         System.out.println("3. Actualizar pintura");
         System.out.println("4. Eliminar pintura");
-        System.out.println("5. Listar autores");
         System.out.println("0. Salir");
     }
 

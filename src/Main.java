@@ -2,8 +2,8 @@ import Modelo.Pintura;
 import java.util.Scanner;
 public class Main {
     private static final Scanner sc = new Scanner(System.in);
-
-    public  void main(String[] args) {
+    private static final PinturaDatos pinturaDatos = new PinturaDatos();
+    public static  void main(String[] args) {
         int opcion;
 
         do {
@@ -15,7 +15,7 @@ public class Main {
                 // listarPinturas();
                 case 2 -> { 
                 System.out.println("Agregar pintura...");
-                PinturaDatos.registrarPintura(datosPintura());
+                pinturaDatos.registrarPintura(datosPintura());
                 }
                 case 3 -> System.out.println("Actualizar pintura...");
                 // actualizarPintura();

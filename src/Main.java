@@ -19,8 +19,6 @@ public class Main {
                 // actualizarPintura();
                 case 4 -> System.out.println("Eliminar pintura...");
                 // eliminarPintura();
-                case 5 -> System.out.println("Listar autores...");
-                // listarAutores();
                 case 0 -> System.out.println("Saliendo del sistema...");
                 default -> System.out.println("Opción no válida.");
             }

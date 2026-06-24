@@ -11,6 +11,8 @@ public class ConexionDB {
         String USER = config.get("DB_USER");
         String PASS = config.get("DB_PASS");
 
+        System.setProperty("user.timezone", "America/Santiago");
+
         return DriverManager.getConnection(DB_URL, USER, PASS);
     }
 }

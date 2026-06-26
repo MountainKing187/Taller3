@@ -1,11 +1,9 @@
-import java.util.Scanner;
-
-import Modelo.Pintura;
-import Modelo.Venta;
-
 import Datos.CatalogoDatos;
 import Datos.PinturaDatos;
 import Datos.VentaDatos;
+import Modelo.Pintura;
+import Modelo.Venta;
+import java.util.Scanner;
 
 public class Main {
     private static final Scanner sc = new Scanner(System.in);
@@ -46,7 +44,8 @@ public class Main {
                     procesarVenta();
                 }
                 case 6 -> {
-                    System.out.println("Listar ");
+                    System.out.println("Listar Ventas...");
+                    catalogoDatos.mostrarVentas();
                 }
                  
                 case 0 -> System.out.println("Saliendo del sistema...");

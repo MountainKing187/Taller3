@@ -1,3 +1,4 @@
+package Datos;
 import Modelo.Pintura;
 import java.sql.*;
 import util.ConexionDB;

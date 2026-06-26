@@ -1,5 +1,9 @@
-import Modelo.Pintura;
 import java.util.Scanner;
+
+import Modelo.Pintura;
+import Datos.CatalogoDatos;
+import Datos.PinturaDatos;
+
 public class Main {
     private static final Scanner sc = new Scanner(System.in);
     private static final PinturaDatos pinturaDatos = new PinturaDatos();

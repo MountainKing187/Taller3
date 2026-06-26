@@ -1,0 +1,15 @@
+package Modelo;
+
+public class Cliente {
+    private String rutCliente, nombre, telefono, correo;
+
+    public String getCorreo() { return correo; }
+    public String getNombre() { return nombre; }
+    public String getRutCliente() { return rutCliente; }
+    public String getTelefono() { return telefono; }
+
+    public void setRutCliente(String rutCliente) { this.rutCliente = rutCliente; }
+    public void setCorreo(String correo) { this.correo = correo; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setTelefono(String telefono) { this.telefono = telefono; }
+}

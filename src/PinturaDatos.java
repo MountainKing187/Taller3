@@ -1,6 +1,5 @@
-import java.sql.*;
-
 import Modelo.Pintura;
+import java.sql.*;
 import util.ConexionDB;
 
 public class PinturaDatos {
@@ -27,7 +26,7 @@ public class PinturaDatos {
     }
 
     public boolean actualizarPintura(Pintura pintura) {
-        String sql = "UPDATE Pintura SET Año = ?, Valor = ?, Titulo = ?, Estado = ?, Cod_Autor = ? WHERE Cod_Pintura = ?";
+        String sql = "UPDATE Pintura SET Año = ?, Valor = ?, Titulo = ?, Cod_Autor = ? WHERE Cod_Pintura = ?";
         
         try (Connection conn = ConexionDB.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -35,7 +34,6 @@ public class PinturaDatos {
             pstmt.setInt(1, pintura.getAnio());
             pstmt.setInt(2, pintura.getValor());
             pstmt.setString(3, pintura.getTitulo());
-            pstmt.setString(4, pintura.getEstado());
             pstmt.setInt(5, pintura.getCodAutor());
             pstmt.setInt(6, pintura.getCodPintura());
             

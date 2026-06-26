@@ -92,14 +92,15 @@ public class CatalogoDatos {
          ResultSet rs = pstmt.executeQuery()) {
 
         System.out.println("\n--- Registro de Ventas ---");
-        System.out.printf("%-10s | %-12s | %-12s | %-20s | %-25s%n",
+        System.out.printf("%-10s | %-19s | %-12s | %-20s | %-25s%n",
                 "CÓDIGO", "FECHA", "MONTO", "CLIENTE", "PINTURA");
         System.out.println("-------------------------------------------------------------------------------------");
 
         while (rs.next()) {
-            System.out.printf("%-10d | %-12s | %-12.2f | %-20s | %-25s%n",
+            System.out.printf("%-10d | %-19s | %-12.2f | %-20s | %-25s%n",
                     rs.getInt("Cod_Venta"),
-                    rs.getDate("Fecha_Venta").toString(),
+                    rs.getDate("Fecha_Venta").toString() + " " +
+                    rs.getTime("Fecha_Venta").toString(),
                     rs.getDouble("Monto_Total"),
                     rs.getString("Nombre_Cliente"),
                     rs.getString("Titulo_Pintura"));

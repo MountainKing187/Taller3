@@ -75,6 +75,7 @@ public class Main {
         System.out.println("3. Actualizar pintura");
         System.out.println("4. Eliminar pintura");
         System.out.println("5. Procesar Venta");
+        System.out.println("6. Crear Cliente");
         System.out.println("7. Ver Ventas");
         System.out.println("0. Salir");
     }

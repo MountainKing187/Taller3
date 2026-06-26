@@ -17,7 +17,7 @@ public class Main {
 
             switch (opcion) {
                 case 1 -> { 
-                System.out.println("Listar pinturas...");
+                System.out.println("Listando pinturas...");
                 catalogoDatos.mostrarPinturas();
                 }
                 case 2 -> { 
@@ -33,6 +33,13 @@ public class Main {
                 System.out.println("Eliminar pintura...");
                 catalogoDatos.mostrarPinturas();
                 pinturaDatos.eliminarPintura(leerEntero("Código de la pintura a eliminar: "));
+                }
+
+                case 5 -> {
+                    System.out.println("Listando Ventas...");
+                }
+                case 6 -> {
+                    System.out.println("Listar ");
                 }
                  
                 case 0 -> System.out.println("Saliendo del sistema...");
@@ -82,20 +89,16 @@ public class Main {
     int anio = leerEntero("Año: ");
     int valor = leerEntero("Valor: ");
     String titulo = leerTexto("Título: ");
-    String estado = leerTexto("Estado: ");
 
     catalogoDatos.mostrarAutores();
     int codAutor = leerEntero("Código de autor: ");
-
 
     Pintura p = new Pintura();
     p.setCodPintura(codPintura);
     p.setAnio(anio);
     p.setValor(valor);
     p.setTitulo(titulo);
-    p.setEstado(estado);
     p.setCodAutor(codAutor);
-
     return p;
 }
 

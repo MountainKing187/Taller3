@@ -33,7 +33,7 @@ public class CatalogoDatos {
         System.err.println("Error al obtener las pinturas: " + e.getMessage());
     }
 }
-    // 1. Mostrar Autores
+
     public void mostrarAutores() {
         String sql = "SELECT Cod_Autor, Nombre, Nacionalidad FROM Autor ORDER BY Cod_Autor ASC";
         
@@ -53,6 +53,30 @@ public class CatalogoDatos {
             }
         } catch (SQLException e) {
             System.err.println("Error al obtener los autores: " + e.getMessage());
+        }
+    }
+
+
+    public void mostrarClientes() {
+        String sql = "SELECT Rut_Cliente, Nombre, Telefono, Correo FROM Cliente";
+        
+        try (Connection conn = ConexionDB.conectar();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            
+            System.out.println("\n--- Catálogo de Clientes ---");
+            System.out.printf("%-10s | %-25s | %-12s |%-25s%n", "Rut Cliente", "Nombre", "Telefono", "Correo");
+            System.out.println("---------------------------------------------------------------");
+            
+            while (rs.next()) {
+                System.out.printf("%-10s | %-25s | %-12s |%-25s%n", 
+                                  rs.getString("Rut_Cliente"), 
+                                  rs.getString("Nombre"), 
+                                  rs.getString("Telefono"),
+                                  rs.getString("Correo"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener los clientes: " + e.getMessage());
         }
     }
 

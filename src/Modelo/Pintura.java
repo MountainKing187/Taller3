@@ -5,12 +5,15 @@ public class Pintura {
     private int anio;
     private int valor;
     private String titulo;
+    private String estado;
     private int codAutor;
-    private String rutPrestamista;
-    private int codSala;
 
     public int getAnio() {
         return anio;
+    }
+
+    public String getEstado() {
+        return estado;
     }
     
     public int getCodAutor() {
@@ -19,14 +22,6 @@ public class Pintura {
     
     public int getCodPintura() {
         return codPintura;
-    }
-
-    public int getCodSala() {
-        return codSala;
-    }
-
-    public String getRutPrestamista() {
-        return rutPrestamista;
     }
 
     public String getTitulo() {
@@ -49,14 +44,10 @@ public class Pintura {
         this.codPintura = codPintura;
     }
 
-    public void setCodSala(int codSala) {
-        this.codSala = codSala;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
-
-    public void setRutPrestamista(String rutPrestamista) {
-        this.rutPrestamista = rutPrestamista;
-    }
-
+    
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }

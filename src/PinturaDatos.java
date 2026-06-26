@@ -1,13 +1,11 @@
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import Modelo.Pintura;
 import util.ConexionDB;
 
 public class PinturaDatos {
     public boolean registrarPintura(Pintura pintura) {
-        String sql = "INSERT INTO Pintura (Año, Valor, Titulo, Cod_Autor, Rut_Prestamista, Cod_Sala) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Pintura (Año, Valor, Titulo, Estado, Cod_Autor) VALUES (?, ?, ?, ?, ?)";
         
         // El bloque try-with-resources cierra automáticamente la conexión y el statement
         try (Connection conn = ConexionDB.conectar();
@@ -16,9 +14,8 @@ public class PinturaDatos {
             pstmt.setInt(1, pintura.getAnio());
             pstmt.setInt(2, pintura.getValor());
             pstmt.setString(3, pintura.getTitulo());
-            pstmt.setInt(4, pintura.getCodAutor());
-            pstmt.setString(5, pintura.getRutPrestamista());
-            pstmt.setInt(6, pintura.getCodSala());
+            pstmt.setString(4, pintura.getEstado());
+            pstmt.setInt(5, pintura.getCodAutor());
             
             int filasAfectadas = pstmt.executeUpdate();
             return filasAfectadas > 0;
@@ -30,7 +27,7 @@ public class PinturaDatos {
     }
 
     public boolean actualizarPintura(Pintura pintura) {
-        String sql = "UPDATE Pintura SET Año = ?, Valor = ?, Titulo = ?, Cod_Autor = ?, Rut_Prestamista = ?, Cod_Sala = ? WHERE Cod_Pintura = ?";
+        String sql = "UPDATE Pintura SET Año = ?, Valor = ?, Titulo = ?, Estado = ?, Cod_Autor = ? WHERE Cod_Pintura = ?";
         
         try (Connection conn = ConexionDB.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -38,10 +35,9 @@ public class PinturaDatos {
             pstmt.setInt(1, pintura.getAnio());
             pstmt.setInt(2, pintura.getValor());
             pstmt.setString(3, pintura.getTitulo());
-            pstmt.setInt(4, pintura.getCodAutor());
-            pstmt.setString(5, pintura.getRutPrestamista());
-            pstmt.setInt(6, pintura.getCodSala());
-            pstmt.setInt(7, pintura.getCodPintura());
+            pstmt.setString(4, pintura.getEstado());
+            pstmt.setInt(5, pintura.getCodAutor());
+            pstmt.setInt(6, pintura.getCodPintura());
             
             int filasAfectadas = pstmt.executeUpdate();
             return filasAfectadas > 0;

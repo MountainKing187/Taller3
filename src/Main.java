@@ -57,20 +57,16 @@ public class Main {
         int anio = leerEntero("Año: ");
         int valor = leerEntero("Valor: ");
         String titulo = leerTexto("Título: ");
+        String estado = leerTexto("Estado: ");
         catalogoDatos.mostrarAutores();
         int codAutor = leerEntero("Código de autor: ");
-        catalogoDatos.mostrarPrestamistas();
-        String rutPrestamista = leerTexto("RUT prestamista: ");
-        catalogoDatos.mostrarSalas();
-        int codSala = leerEntero("Código de sala: ");
 
         Pintura p = new Pintura(); 
         p.setAnio(anio);
         p.setValor(valor);
         p.setTitulo(titulo);
+        p.setEstado(estado);
         p.setCodAutor(codAutor);
-        p.setRutPrestamista(rutPrestamista);
-        p.setCodSala(codSala);
 
         return p;
     }
@@ -82,24 +78,19 @@ public class Main {
     int anio = leerEntero("Año: ");
     int valor = leerEntero("Valor: ");
     String titulo = leerTexto("Título: ");
+    String estado = leerTexto("Estado: ");
 
     catalogoDatos.mostrarAutores();
     int codAutor = leerEntero("Código de autor: ");
 
-    catalogoDatos.mostrarPrestamistas();
-    String rutPrestamista = leerTexto("RUT prestamista: ");
-
-    catalogoDatos.mostrarSalas();
-    int codSala = leerEntero("Código de sala: ");
 
     Pintura p = new Pintura();
     p.setCodPintura(codPintura);
     p.setAnio(anio);
     p.setValor(valor);
     p.setTitulo(titulo);
+    p.setEstado(estado);
     p.setCodAutor(codAutor);
-    p.setRutPrestamista(rutPrestamista);
-    p.setCodSala(codSala);
 
     return p;
 }

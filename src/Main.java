@@ -1,12 +1,16 @@
 import java.util.Scanner;
 
 import Modelo.Pintura;
+import Modelo.Venta;
+
 import Datos.CatalogoDatos;
 import Datos.PinturaDatos;
+import Datos.VentaDatos;
 
 public class Main {
     private static final Scanner sc = new Scanner(System.in);
     private static final PinturaDatos pinturaDatos = new PinturaDatos();
+    private static final VentaDatos ventaDatos = new VentaDatos();
     private static final CatalogoDatos catalogoDatos = new CatalogoDatos();
     public static  void main(String[] args) {
         int opcion;
@@ -17,26 +21,30 @@ public class Main {
 
             switch (opcion) {
                 case 1 -> { 
-                System.out.println("Listando pinturas...");
-                catalogoDatos.mostrarPinturas();
+                    System.out.println("Listando pinturas...");
+                    catalogoDatos.mostrarPinturas();
                 }
+
                 case 2 -> { 
-                System.out.println("Agregar pintura...");
-                pinturaDatos.registrarPintura(datosPintura());
+                    System.out.println("Agregar pintura...");
+                    pinturaDatos.registrarPintura(datosPintura());
                 }
+
                 case 3 -> {
-                System.out.println("Actualizar pintura...");
-                catalogoDatos.mostrarPinturas();
-                pinturaDatos.actualizarPintura(pinturaActualizar());
+                    System.out.println("Actualizar pintura...");
+                    catalogoDatos.mostrarPinturas();
+                    pinturaDatos.actualizarPintura(pinturaActualizar());
                 }
+
                 case 4 -> {
-                System.out.println("Eliminar pintura...");
-                catalogoDatos.mostrarPinturas();
-                pinturaDatos.eliminarPintura(leerEntero("Código de la pintura a eliminar: "));
+                    System.out.println("Eliminar pintura...");
+                    catalogoDatos.mostrarPinturas();
+                    pinturaDatos.eliminarPintura(leerEntero("Código de la pintura a eliminar: "));
                 }
 
                 case 5 -> {
-                    System.out.println("Listando Ventas...");
+                    System.out.println("Procesar Venta...");
+                    ventaDatos.procesarVenta(datosVenta());
                 }
                 case 6 -> {
                     System.out.println("Listar ");
@@ -100,7 +108,23 @@ public class Main {
     p.setTitulo(titulo);
     p.setCodAutor(codAutor);
     return p;
-}
+    }
+
+
+    private static Venta datosVenta() {
+    System.out.println("\n--- Procesar Nueva Venta ---");
+    
+    String rutCliente = leerTexto("Ingrese el RUT del cliente: ");
+    int codPintura = leerEntero("Ingrese el CÓDIGO de la pintura: ");
+    int montoTotal = leerEntero("Ingrese el Monto Total de la venta: ");
+
+    Venta nuevaVenta = new Venta();
+    nuevaVenta.setRutCliente(rutCliente);
+    nuevaVenta.setCodPintura(codPintura);
+    nuevaVenta.setMontoTotal(montoTotal);
+
+    return nuevaVenta;
+    }
 
     private static String leerTexto(String mensaje) {
         while (true) {

@@ -7,7 +7,7 @@ public class PinturaDatos {
     public boolean registrarPintura(Pintura pintura) {
         String sql = "INSERT INTO Pintura (Año, Valor, Titulo, Estado, Cod_Autor) VALUES (?, ?, ?, ?, ?)";
         
-        // El bloque try-with-resources cierra automáticamente la conexión y el statement
+
         try (Connection conn = ConexionDB.conectar();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             

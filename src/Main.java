@@ -2,8 +2,10 @@ import java.util.Scanner;
 
 import Modelo.Pintura;
 import Modelo.Venta;
+import Modelo.Cliente;
 
 import Datos.CatalogoDatos;
+import Datos.ClienteDatos;
 import Datos.PinturaDatos;
 import Datos.VentaDatos;
 
@@ -12,6 +14,7 @@ public class Main {
     private static final PinturaDatos pinturaDatos = new PinturaDatos();
     private static final VentaDatos ventaDatos = new VentaDatos();
     private static final CatalogoDatos catalogoDatos = new CatalogoDatos();
+    private static final ClienteDatos clienteDatos = new ClienteDatos();
     public static  void main(String[] args) {
         int opcion;
 
@@ -46,7 +49,7 @@ public class Main {
                     procesarVenta();
                 }
                 case 6 -> {
-                    System.out.println("Listar ");
+                    crearCliente();
                 }
                  
                 case 0 -> System.out.println("Saliendo del sistema...");
@@ -91,25 +94,42 @@ public class Main {
     }
 
     private static Pintura pinturaActualizar() {
-    System.out.println("\n--- Actualización de pintura ---");
-    
-    int codPintura = leerEntero("Código de la pintura a actualizar: ");
-    int anio = leerEntero("Año: ");
-    int valor = leerEntero("Valor: ");
-    String titulo = leerTexto("Título: ");
+        System.out.println("\n--- Actualización de pintura ---");
+        
+        int codPintura = leerEntero("Código de la pintura a actualizar: ");
+        int anio = leerEntero("Año: ");
+        int valor = leerEntero("Valor: ");
+        String titulo = leerTexto("Título: ");
 
-    catalogoDatos.mostrarAutores();
-    int codAutor = leerEntero("Código de autor: ");
+        catalogoDatos.mostrarAutores();
+        int codAutor = leerEntero("Código de autor: ");
 
-    Pintura p = new Pintura();
-    p.setCodPintura(codPintura);
-    p.setAnio(anio);
-    p.setValor(valor);
-    p.setTitulo(titulo);
-    p.setCodAutor(codAutor);
-    return p;
+        Pintura p = new Pintura();
+        p.setCodPintura(codPintura);
+        p.setAnio(anio);
+        p.setValor(valor);
+        p.setTitulo(titulo);
+        p.setCodAutor(codAutor);
+        return p;
     }
 
+    private static void crearCliente(){
+        System.out.println("Procesar Venta...");
+        System.out.println("\n--- Crear nuevo cliente ---");
+
+        String rutCliente = leerTexto("Ingrese el RUT del cliente: ");
+        String nombre = leerTexto("Ingrese el nombre del cliente: ");
+        String correo = leerTexto("Ingrese el correo del cliente: ");
+        String telefono = leerTexto("Ingrese el telefono del cliente: ");
+
+        Cliente cliente = new Cliente();
+        cliente.setRutCliente(rutCliente);
+        cliente.setNombre(nombre);
+        cliente.setCorreo(correo);
+        cliente.setTelefono(telefono);
+
+        clienteDatos.registrarCliente(cliente);
+    }
 
     private static void procesarVenta() {
         System.out.println("Procesar Venta...");

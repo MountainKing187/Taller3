@@ -8,6 +8,9 @@ import Datos.CatalogoDatos;
 import Datos.ClienteDatos;
 import Datos.PinturaDatos;
 import Datos.VentaDatos;
+import Modelo.Pintura;
+import Modelo.Venta;
+import java.util.Scanner;
 
 public class Main {
     private static final Scanner sc = new Scanner(System.in);
@@ -48,6 +51,9 @@ public class Main {
                 case 5 -> {
                     procesarVenta();
                 }
+                case 7-> {
+                    System.out.println("Listar Ventas...");
+                    catalogoDatos.mostrarVentas();
                 case 6 -> {
                     crearCliente();
                 }
@@ -71,6 +77,7 @@ public class Main {
         System.out.println("3. Actualizar pintura");
         System.out.println("4. Eliminar pintura");
         System.out.println("5. Procesar Venta");
+        System.out.println("7. Ver Ventas");
         System.out.println("0. Salir");
     }
 

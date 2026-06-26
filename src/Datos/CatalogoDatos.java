@@ -79,5 +79,34 @@ public class CatalogoDatos {
             System.err.println("Error al obtener los clientes: " + e.getMessage());
         }
     }
+    public void mostrarVentas() {
+    String sql = "SELECT v.Cod_Venta, v.Fecha_Venta, v.Monto_Total, " +
+                 "c.Nombre AS Nombre_Cliente, p.Titulo AS Titulo_Pintura " +
+                 "FROM Venta v " +
+                 "INNER JOIN Cliente c ON v.Rut_Cliente = c.Rut_Cliente " +
+                 "INNER JOIN Pintura p ON v.Cod_Pintura = p.Cod_Pintura " +
+                 "ORDER BY v.Cod_Venta ASC";
 
+    try (Connection conn = ConexionDB.conectar();
+         PreparedStatement pstmt = conn.prepareStatement(sql);
+         ResultSet rs = pstmt.executeQuery()) {
+
+        System.out.println("\n--- Registro de Ventas ---");
+        System.out.printf("%-10s | %-12s | %-12s | %-20s | %-25s%n",
+                "CÓDIGO", "FECHA", "MONTO", "CLIENTE", "PINTURA");
+        System.out.println("-------------------------------------------------------------------------------------");
+
+        while (rs.next()) {
+            System.out.printf("%-10d | %-12s | %-12.2f | %-20s | %-25s%n",
+                    rs.getInt("Cod_Venta"),
+                    rs.getDate("Fecha_Venta").toString(),
+                    rs.getDouble("Monto_Total"),
+                    rs.getString("Nombre_Cliente"),
+                    rs.getString("Titulo_Pintura"));
+        }
+
+    } catch (SQLException e) {
+        System.err.println("Error al obtener las ventas: " + e.getMessage());
+    }
+}
 }

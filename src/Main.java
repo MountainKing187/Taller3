@@ -43,8 +43,7 @@ public class Main {
                 }
 
                 case 5 -> {
-                    System.out.println("Procesar Venta...");
-                    ventaDatos.procesarVenta(datosVenta());
+                    procesarVenta();
                 }
                 case 6 -> {
                     System.out.println("Listar ");
@@ -68,6 +67,7 @@ public class Main {
         System.out.println("2. Agregar pintura");
         System.out.println("3. Actualizar pintura");
         System.out.println("4. Eliminar pintura");
+        System.out.println("5. Procesar Venta");
         System.out.println("0. Salir");
     }
 
@@ -111,10 +111,13 @@ public class Main {
     }
 
 
-    private static Venta datosVenta() {
+    private static void procesarVenta() {
+    System.out.println("Procesar Venta...");
     System.out.println("\n--- Procesar Nueva Venta ---");
     
+    catalogoDatos.mostrarClientes();
     String rutCliente = leerTexto("Ingrese el RUT del cliente: ");
+    catalogoDatos.mostrarPinturas();
     int codPintura = leerEntero("Ingrese el CÓDIGO de la pintura: ");
     int montoTotal = leerEntero("Ingrese el Monto Total de la venta: ");
 
@@ -123,7 +126,7 @@ public class Main {
     nuevaVenta.setCodPintura(codPintura);
     nuevaVenta.setMontoTotal(montoTotal);
 
-    return nuevaVenta;
+    ventaDatos.procesarVenta(nuevaVenta);
     }
 
     private static String leerTexto(String mensaje) {

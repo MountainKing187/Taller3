@@ -1,10 +1,9 @@
 package Datos;
 
+import Modelo.Venta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-import Modelo.Venta;
 import util.ConexionDB;
 
 public class VentaDatos {
@@ -46,8 +45,12 @@ public class VentaDatos {
                 }
 
             } catch (SQLException e) {
-                conn.rollback();
-                System.err.println("Error en la transacción. Rollback ejecutado: " + e.getMessage());
+                if ("23503".equals(e.getSQLState())) {
+                     System.err.println("Error: el RUT del cliente no existe o la pintura no es válida.");
+                } else {
+                    System.err.println("Error al registrar la venta: " + e.getMessage());
+                }
+
                 return false;
             } finally {
                 conn.setAutoCommit(true);

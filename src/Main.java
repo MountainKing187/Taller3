@@ -43,7 +43,7 @@ public class Main {
                 case 5 -> {
                     procesarVenta();
                 }
-                case 6 -> {
+                case 7-> {
                     System.out.println("Listar Ventas...");
                     catalogoDatos.mostrarVentas();
                 }
@@ -67,6 +67,7 @@ public class Main {
         System.out.println("3. Actualizar pintura");
         System.out.println("4. Eliminar pintura");
         System.out.println("5. Procesar Venta");
+        System.out.println("7. Ver Ventas");
         System.out.println("0. Salir");
     }
 

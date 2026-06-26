@@ -57,7 +57,7 @@ public class Main {
         int anio = leerEntero("Año: ");
         int valor = leerEntero("Valor: ");
         String titulo = leerTexto("Título: ");
-        String estado = leerTexto("Estado: ");
+        String estado = "Disponible";
         catalogoDatos.mostrarAutores();
         int codAutor = leerEntero("Código de autor: ");
 

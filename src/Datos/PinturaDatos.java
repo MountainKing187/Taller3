@@ -105,35 +105,4 @@ public boolean eliminarPintura(int codPintura) {
             return false;
         }
     }
-
-    public int obtenerValorPintura(int codPintura) {
-        String sql = "SELECT Valor FROM Pintura WHERE Cod_Pintura = ?";
-        
-        try (Connection conn = ConexionDB.conectar()) {
-            conn.setAutoCommit(false);
-            
-            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-                pstmt.setInt(1, codPintura);
-                
-                int filasAfectadas = pstmt.executeUpdate();
-                
-                if (filasAfectadas > 0) {
-                    conn.commit();
-                    return true;
-                } else {
-                    conn.rollback();
-                    return false;
-                }
-            } catch (SQLException e) {
-                conn.rollback();
-                System.err.println("Error al eliminar la pintura: " + e.getMessage());
-                return false;
-            }
-        } catch (SQLException e) {
-            System.err.println("Error de conexión: " + e.getMessage());
-            return false;
-        }
-        
-        return -1;
-    }
 }

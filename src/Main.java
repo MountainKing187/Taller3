@@ -112,21 +112,27 @@ public class Main {
 
 
     private static void procesarVenta() {
-    System.out.println("Procesar Venta...");
-    System.out.println("\n--- Procesar Nueva Venta ---");
-    
-    catalogoDatos.mostrarClientes();
-    String rutCliente = leerTexto("Ingrese el RUT del cliente: ");
-    catalogoDatos.mostrarPinturas();
-    int codPintura = leerEntero("Ingrese el CÓDIGO de la pintura: ");
-    int montoTotal = leerEntero("Ingrese el Monto Total de la venta: ");
+        System.out.println("Procesar Venta...");
+        System.out.println("\n--- Procesar Nueva Venta ---");
+        
+        catalogoDatos.mostrarClientes();
+        String rutCliente = leerTexto("Ingrese el RUT del cliente: ");
+        catalogoDatos.mostrarPinturas();
+        int codPintura = leerEntero("Ingrese el CÓDIGO de la pintura: ");
+        int valorPintura = pinturaDatos.obtenerValorPintura(codPintura);
+        
+        if (valorPintura == -1) {
+            System.out.println("Error: No se encontró ninguna pintura con ese código en el catálogo.");
+        } else {
+            System.out.println("El valor de la obra es: $" + valorPintura);
+            
+            Venta nuevaVenta = new Venta();
+            nuevaVenta.setRutCliente(rutCliente);
+            nuevaVenta.setCodPintura(codPintura);
+            nuevaVenta.setMontoTotal(valorPintura);
 
-    Venta nuevaVenta = new Venta();
-    nuevaVenta.setRutCliente(rutCliente);
-    nuevaVenta.setCodPintura(codPintura);
-    nuevaVenta.setMontoTotal(montoTotal);
-
-    ventaDatos.procesarVenta(nuevaVenta);
+            ventaDatos.procesarVenta(nuevaVenta);
+        }
     }
 
     private static String leerTexto(String mensaje) {

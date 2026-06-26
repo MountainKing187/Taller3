@@ -74,4 +74,25 @@ public boolean actualizarPintura(Pintura pintura) {
             return false;
         }
     }
+
+    public int obtenerValorPintura(int codPintura) {
+        String sql = "SELECT Valor FROM Pintura WHERE Cod_Pintura = ?";
+        
+        try (Connection conn = ConexionDB.conectar();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, codPintura);
+            
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("Valor");
+                }
+            }
+            
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el valor de la pintura: " + e.getMessage());
+        }
+        
+        return -1;
+    }
 }
